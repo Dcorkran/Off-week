@@ -92,3 +92,127 @@ function array_diff(a, b) {
   }
   return a;
 }
+
+
+function shoot(x){
+  // declare variable and multiplier sums to be used in loops
+  var p1Sum = 0;
+  var p2Sum = 0;
+  var multiplier = 1;
+  // iterate through the array first checking if the boolean is true or false
+  // to update the multiplier
+  for (var i = 0; i < x.length; i++) {
+    // create round score variables to use in order to update the p1 and p2Sums
+    var p1Round = 0;
+    var p2Round = 0;
+    if (x[i][1] === true) {
+      multiplier = 2;
+    } else {
+      multiplier = 1;
+    }
+    // iterate through the string contained in object checking for X, and add to sum accordingly
+    for (var j = 0; j < x[i][0].P1.length; j++) {
+      if (x[i][0].P1[j] === 'X') {
+        p1Sum += (1 * multiplier);
+      }
+    }
+    for (var j = 0; j < x[i][0].P2.length; j++) {
+      if (x[i][0].P2[j] === 'X') {
+        p2Sum += (1 * multiplier);
+      }
+    }
+  }
+  // Check for win or draw
+  if (p1Sum === p2Sum) {
+    return 'Draw!'
+  } else if (p1Sum > p2Sum) {
+    return 'Pete Wins!'
+  } else {
+    return 'Phil Wins!';
+  }
+}
+
+
+/* Should return ᐃ type:
+  0 : if ᐃ cannot be made with given sides
+  1 : acute ᐃ
+  2 : right ᐃ
+  3 : obtuse ᐃ
+*/
+function triangleType(a, b, c){
+  // put the arguments into an array and sort them from least to greatest
+  var sortArr = [a,b,c];
+  sortArr.sort(function(x, y) {
+    return x - y;
+  });
+  // if side a + b is less than or equal to the length c, it isn't a ᐃ
+  // if side c^2 is greater than a^2 + b^2, it is an obtuse ᐃ
+  // if side c^2 is less than a^2 + b^2, it is an acute ᐃ
+  // else, it has to be a right triangle
+  if (sortArr[0] + sortArr[1] <= sortArr[2]) {
+    return 0;
+  } else if (Math.pow(sortArr[2],2) > Math.pow(sortArr[0],2) + Math.pow(sortArr[1],2)) {
+    return 3;
+  } else if (Math.pow(sortArr[2],2) < Math.pow(sortArr[0],2) + Math.pow(sortArr[1],2)) {
+    return 1;
+  } else {
+    return 2;
+  }
+
+}
+
+triangleType(2, 4, 6);
+
+function createPhoneNumber(numbers){
+  // start the phoneNumber variable with ( so it doesn't need to be added in a loop
+  var phoneNumber = '(';
+  for (var i = 0; i < numbers.length; i++) {
+    phoneNumber += numbers[i];
+    // the if statement handles the closing ')' and the '-' at appropriate iterations
+    if (i === 2) {
+      phoneNumber += ') ';
+    } else if (i === 5) {
+      phoneNumber += '-';
+    }
+  }
+  return phoneNumber;
+}
+
+createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+
+function findOdd(A) {
+  var newObj = {};
+  if (A.length === 1) {
+    return A[0];
+  }
+  for (var i = 0; i < A.length; i++) {
+    if (newObj[A[i]] === undefined) {
+      newObj[A[i]] = 1;
+    } else {
+      newObj[A[i]]++;
+    }
+  }
+  var randomObjValue = newObj[A[0]];
+  var testArr1 = [];
+  var testArr2 = [];
+  for (var key in newObj) {
+    if (newObj[key] === randomObjValue) {
+      testArr1.push(key);
+    } else {
+      testArr2.push(key);
+    }
+  }
+  if (testArr1.length < testArr2.length) {
+    return parseInt(testArr1[0]);
+  } else {
+    return parseInt(testArr2[0]);
+  }
+}
+
+function findOdd(A){
+  if (A.length === 1) {
+    return A[0];
+  } else {
+
+  }
+}

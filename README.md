@@ -117,3 +117,97 @@ function array_diff(a, b) {
   return a.filter(function (v) { return b.indexOf(v) === -1 });
 }
 ```
+
+## Clay Pigeon Shooting
+Pete and his mate Phil are out in the countryside shooting clay pigeons with a shotgun - amazing fun.
+
+They decide to have a competition. 3 rounds, 2 shots each. Winner is the one with the most hits.
+
+Some of the clays have something attached to create lots of smoke when hit, guarenteed by the packaging to generate 'real excitement!' (genuinely this happened). None of the explosive things actually worked, but for this kata lets say they did.
+
+For each round you will receive the following format:
+
+[{P1:'XX', P2:'XO'}, true]
+
+That is an array containing an object and a boolean. Pl represents Pete, P2 represents Phil. X represents a hit and O represents a miss. If the boolean is true, any hit is worth 2. If it is false, any hit is worth 1.
+
+Find out who won. If it's Pete, return 'Pete Wins!'. If it is Phil, return 'Phil Wins!'. If the scores are equal, return 'Draw!'.
+
+Note that as there are three rounds, the actual input (x) will look something like this:
+
+[[{P1:'XX', P2:'XO'}, true], [{P1:'OX', P2:'OO'}, false], [{P1:'XX', P2:'OX'}, true]]
+
+### Clever Answer (found after solving)
+```javascript
+shoot=x=>(y=x.reduce((a,b)=>a+(b[0].P1.split("O").length-b[0].P2.split("O").length)*(b[1]+1),0))>0?'Phil Wins!':y<0?'Pete Wins!':'Draw!'
+```
+
+
+## Triangle Type
+In this kata, you should calculate type of triangle with three given sides a, b and c (given in any order).
+
+If all angles are less than 90°, this triangle is acute and function should return 1.
+
+If one angle is strictly 90°, this triangle is right and function should return 2.
+
+If one angle more than 90°, this triangle is obtuse and function should return 3.
+
+If three sides cannot form triangle, or one angle is 180° (which turns triangle into segment) - function should return 0.
+
+Input parameters are sides of given triangle. All input values are non-negative floating point or integer numbers (or both).
+
+### Best Practice (found after answering. Mine was kind of similar for once!)
+
+```javascript
+function triangleType(a, b, c){
+  var result = triangleType.ACUTE,
+      sides = [a,b,c].sort(function(a,b){return a-b});
+
+  a = sides[0], b = sides[1], c = sides[2];
+
+  if(a <= c - b) {
+    result = triangleType.INVALID;
+
+  } else if(c*c === a*a + b*b) {
+    result = triangleType.RIGHT;
+
+  } else if(c*c > a*a + b*b) {
+    result = triangleType.OBTUSE;
+  }
+
+  return result;
+}
+
+triangleType.INVALID = 0;
+triangleType.ACUTE = 1;
+triangleType.RIGHT = 2;
+triangleType.OBTUSE = 3;
+```
+
+## Create Phone Number
+Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
+
+### Best Practice (found after answering)
+```javascript
+function createPhoneNumber(numbers){
+  numbers = numbers.join('');
+  return '(' + numbers.substring(0, 3) + ') '
+      + numbers.substring(3, 6)
+      + '-'
+      + numbers.substring(6);
+}
+```
+
+## Find the odd int
+Given an array, find the int that appears an odd number of times.
+
+There will always be only one integer that appears an odd number of times.
+
+### Whoops
+
+I thought the problem was asking me to find the number that appeared an odd amount of times
+as in a different amount of times than other numbers. For example, if the number
+3 showed up 5 times, the number 4 showed up 5 times, and the number 2 showed up four
+times, it should return 4. I kept failing the random tests and could not figure out why.
+I left my original answer in there because I think it is a cool function, but lesson learned!
+RTFD. (To my credit the instructions could possibly be worded better)
