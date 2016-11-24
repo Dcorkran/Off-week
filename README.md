@@ -211,3 +211,17 @@ as in a different amount of times than other numbers. For example, if the number
 times, it should return 4. I kept failing the random tests and could not figure out why.
 I left my original answer in there because I think it is a cool function, but lesson learned!
 RTFD. (To my credit the instructions could possibly be worded better)
+
+### Best Practice (found after answering)
+```javascript
+function findOdd(A) {
+  var obj = {};
+  A.forEach(function(el){
+    obj[el] ? obj[el]++ : obj[el] = 1;
+  });
+
+  for(prop in obj) {
+    if(obj[prop] % 2 !== 0) return Number(prop);
+  }
+}
+```

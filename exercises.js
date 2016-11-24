@@ -210,9 +210,22 @@ function findOdd(A) {
 }
 
 function findOdd(A){
-  if (A.length === 1) {
-    return A[0];
-  } else {
-
-  }
+  // declare new object which we will use to tally the times a number appears
+  var newObj = {};
+    // if it is the first time a number appears, give it a tally of one
+    // if it has already appeared, add one to the tally
+    for (var i = 0; i < A.length; i++) {
+      if (!newObj[A[i]]) {
+        newObj[A[i]] = 1;
+      } else {
+        newObj[A[i]]++;
+      }
+    }
+    // iterate through the object - when the function finds a number that appears
+    // an odd number of times, return it.
+    for (var key in newObj) {
+      if (newObj[key] % 2 === 1) {
+        return parseInt(key);
+      }
+    }
 }
