@@ -225,3 +225,24 @@ function findOdd(A) {
   }
 }
 ```
+
+## Number of trailing zeros of N!
+Write a program that will calculate the number of trailing zeros in a factorial of a given number.
+
+N! = 1 * 2 * 3 * 4 ... N
+```javascript
+zeros(12) = 2 # 1 * 2 * 3 .. 12 = 479001600
+that has 2 trailing zeros 4790016(00)
+```
+
+Be careful 1000! has length of 2568 digital numbers.
+
+### DC Note
+
+This took me a really long time to get right. I wrestled with the large numbers for
+a pretty long time. At first, I tried converting the solved factorial into a string
+and counting from the last digit until I hit something that was not zero. However,
+most of the tests for this exercise involved large numbers that turned my strings
+into scientific notation. After struggling for a while, I googled around and found
+a formula that helped here. Never be afraid to burn something if it isn't working!
+https://en.wikipedia.org/wiki/Trailing_zero
