@@ -246,3 +246,32 @@ most of the tests for this exercise involved large numbers that turned my string
 into scientific notation. After struggling for a while, I googled around and found
 a formula that helped here. Never be afraid to burn something if it isn't working!
 https://en.wikipedia.org/wiki/Trailing_zero
+
+
+## The Hashtag Generator
+The marketing team are spending way too much time typing in hashtags.
+Let's help them with out own Hashtag Generator!
+
+Here's the deal:
+
+If the final result is longer than 140 chars it must return false.
+If the input is a empty string it must return false.
+It must start with a hashtag (#).
+All words must have their first letter capitalized.
+Example Input to Output:
+
+" Hello there thanks for trying my Kata" => "#HelloThereThanksForTryingMyKata"
+
+" Hello World " => "#HelloWorld"
+
+### Best Practice (Found after answering)
+```javascript
+function generateHashtag (str) {
+  return str.length > 140 || str === '' ? false :
+    '#' + str.split(' ').map(capitalize).join('');
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+```
