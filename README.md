@@ -275,3 +275,27 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 ```
+
+## Largest 5 digit number in a series
+
+In the following 6 digit number:
+
+283910
+
+91 is the greatest sequence of 2 digits.
+
+Complete the solution so that it returns the largest five digit number found within the number given.. The number will be passed in as a string of only digits. It should return a five digit integer. The number passed may be as large as 1000 digits.
+
+Adapted from ProjectEuler.net
+
+### Best Practice (Found after answering)
+
+```javascript
+function solution(digits){
+  var r = 0;
+  for (i = 0; i < digits.length - 4; i++) {
+    r = Math.max(r, parseInt(digits.substr(i,5),10));
+  }
+  return r;
+}
+```
