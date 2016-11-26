@@ -343,3 +343,17 @@ snail = function(array) {
 My answer works, but it could definitely use some refactoring. I could create a
 function that takes in the direction and acts accordingly which would make the sort
 function much more readable.
+
+## Next bigger number with the same digits
+
+You have to create a function that takes a positive integer number and returns the next bigger number formed by the same digits:
+
+nextBigger(12)==21
+nextBigger(513)==531
+nextBigger(2017)==2071
+
+If no bigger number can be composed using those digits, return -1:
+
+nextBigger(9)==-1
+nextBigger(111)==-1
+nextBigger(531)==-1
