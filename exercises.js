@@ -449,3 +449,148 @@ function sumStrings(a,b) {
 // } else {
 //   answer[i] = parseInt(a[maxA]) + parseInt(b[maxB]) % 10;
 // }
+
+function sumStrings(a,b) {
+  let answer = [];
+  for (var i = 0; i < Math.max(a.length,b.length); i++) {
+    answer[i] = 0;
+  }
+
+
+
+  for (let i = 0, aLength = a.length - 1, bLength = b.length - 1; i < answer.length; i++) {
+    if (aLength === -1 && bLength === -1) {
+      return answer.reverse().join('');
+    } else if (bLength === -1) {
+      answer[i] += parseInt(a[aLength]);
+      aLength--;
+    } else if (aLength === -1) {
+      answer[i] += parseInt(b[bLength]);
+      bLength--;
+    } else {
+      answer[i] += (parseInt(a[aLength]) + parseInt(b[bLength])) % 10;
+      if (parseInt(a[aLength]) + parseInt(b[bLength]) >= 10) {
+        answer[i + 1] += 1;
+      }
+      aLength--;
+      bLength--;
+    }
+  }
+  return answer.reverse().join('');
+}
+
+
+function solution(number){
+  let sumOfThreeOrFive = 0;
+  for (var i = 0; i < number; i++) {
+    if (i % 3 === 0) {
+      sumOfThreeOrFive += i;
+    } else if (i % 5 === 0) {
+      sumOfThreeOrFive += i;
+    }
+  }
+  return sumOfThreeOrFive;
+}
+
+
+function pigIt(str){
+  let array = str.split(' ');
+  array = array.map((str)=>{
+    return moveLetters(str);
+  });
+  return array.join(' ');
+  function moveLetters(str){
+    return str.substr(1,str.length - 1) + str[0] + 'ay';
+  }
+}
+
+
+function pascalsTriangle(n) {
+  let answerArray = [1];
+  for (let i = 0; i < n - 1; i++) {
+    let j = 1;
+    let newArr = [1];
+    while (j <= i) {
+      newArr[j] = answerArray[i][j - 1] + answerArray[i][j];
+      j++;
+    }
+    newArr[newArr.length] = 1;
+    answerArray.push(newArr);
+  }
+  return answerArray.reduce((a,b)=>{
+    return a.concat(b);
+  },[]);
+}
+
+
+var spiralize = function(size) {
+  let spiralMatrix = createMatrix(size);
+
+  for (let i = 0, direction = 'right', x = 0, y = 0; i < size; i++) {
+    if (direction === 'right') {
+      while (spiralMatrix[y][x + 1] === 0) {
+        spiralMatrix[y][x] = 1;
+        x++;
+      }
+      spiralMatrix[y][x] = 1;
+      direction = changeDirection(direction);
+    } else if (direction === 'down') {
+      while (spiralMatrix[y + 1][x] != undefined) {
+        spiralMatrix[y][x] = 1;
+        y++;
+      }
+      spiralMatrix[y][x] = 1;
+      direction = changeDirection(direction);
+    } else if (direction === 'left') {
+      while (spiralMatrix[y][x - 1] !== undefined) {
+        spiralMatrix[y][x] = 1;
+        x--;
+      }
+      spiralMatrix[y][x] = 1;
+      direction = changeDirection(direction);
+    } else {
+      while (spiralMatrix[y - 1][x] !== undefined) {
+        spiralMatrix[y][x] = 1;
+        y--;
+      }
+      spiralMatrix[y][x] = 1;
+      direction = changeDirection(direction);
+    }
+  }
+
+  return spiralMatrix;
+
+  function createMatrix(n){
+    let matrix = [];
+    for (let i = 0; i < n; i++) {
+      matrix[i] = [];
+      for (let j = 0; j < n; j++) {
+        matrix[i][j] = 0;
+      }
+    }
+    return matrix;
+  }
+  function changeDirection(direction){
+    if (direction === 'right') {
+      return 'down';
+    } else if (direction === 'down') {
+      return 'left';
+    } else if (direction === 'left') {
+      return 'up';
+    } else {
+      return 'right';
+    }
+  }
+
+  // function updateMatrix(matrix,direction,x,y){
+  //   if (direction === 'right') {
+  //     while (matrix[y][x + 1] !== undefined || matrix[y][x + 1] !== 1) {
+  //       matrix[y][x] = 1;
+  //       x++;
+  //     }
+  //   }
+  // }
+
+};
+
+//  || spiralMatrix[y][x + 1] !== 1
