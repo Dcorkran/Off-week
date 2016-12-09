@@ -594,3 +594,75 @@ var spiralize = function(size) {
 };
 
 //  || spiralMatrix[y][x + 1] !== 1
+
+
+
+function combineAndSort(arr1,arr2){
+  return arr1.concat(arr2).sort();
+}
+
+
+function humanReadable(seconds) {
+  let i = 0, hours = 0, minutes = 0, newSeconds = 0;
+  while (i < seconds) {
+    newSeconds++;
+    i++;
+    if (newSeconds === 60) {
+      minutes++;
+      newSeconds = 0;
+      if (minutes === 60) {
+        hours++;
+        minutes = 0;
+      }
+    }
+  }
+  return `${('0' + hours).slice(-2)}:${('0' + minutes).slice(-2)}:${('0' + newSeconds).slice(-2)}`;
+}
+
+var moveZeros = function (arr) {
+  let zeroArr = [];
+  function removeZeros(value){
+    if (value === 0) {
+      zeroArr.push(value);
+    }
+    return value !== 0;
+  }
+  let answerArr = arr.filter(removeZeros);
+  return answerArr.concat(zeroArr);
+}
+
+
+var palindromeChainLength = function(n) {
+  let done = false
+  let i = 0;
+  while (!done) {
+    if (checkPalindrome(n)) {
+      return i;
+    } else {
+      let reversedN = parseInt(n.toString().split('').reverse().join(''));
+      n += reversedN;
+      i++;
+    }
+  }
+  function checkPalindrome(int){
+    let testInt = parseInt(int.toString().split('').reverse().join(''));
+    if (testInt === int) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+};
+
+function spinWords(str){
+  let splitStr = str.split(' ');
+  return splitStr.map(reverseShort).join(' ');
+  function reverseShort(value){
+    if (value.length >= 5) {
+      return value.split('').reverse().join('');
+    } else {
+      return value;
+    }
+  }
+}
