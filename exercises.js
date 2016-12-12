@@ -690,14 +690,14 @@ function dirReduc(arr){
     switch (value) {
     case 'NORTH':
       if (southCount > 0) {
-        northCount--;
+        southCount--;
       } else {
         newArr.push(value);
       }
       break;
     case 'SOUTH':
       if (northCount > 0) {
-        southCount--;
+        northCount--;
       } else {
         newArr.push(value);
       }
@@ -721,5 +721,6 @@ function dirReduc(arr){
   arr.forEach(checkDirection);
   let newArr = [];
   arr.forEach(deleteDirection);
+  return newArr;
 
 }
