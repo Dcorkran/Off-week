@@ -1,6 +1,7 @@
 # Off-week
 
 Thanksgiving break code wars assessments.
+... This has branched out to more than just Thanksgiving. I will try to keep as updated as possible.
 
 ## songDecoder
 
