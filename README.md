@@ -343,7 +343,7 @@ snail = function(array) {
 ```
 
 ### DC Note
-My answer works, but it could definitely use some refactoring. I could create a
+My answer worked, but it could definitely use some refactoring. I could create a
 function that takes in the direction and acts accordingly which would make the sort
 function much more readable.
 
