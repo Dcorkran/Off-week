@@ -999,3 +999,73 @@ function whoIsNext(names, r){
 
 
 names = ["Sheldon", "Leonard", "Penny", "Rajesh", "Howard"]
+
+
+// random mastery tracking
+var myArray = [1,2,3,4,5,6]
+function isGreater(){
+  return myArray.filter((e)=>{
+    return e >= 3;
+  });
+}
+
+function isGreater(){
+  function testGreater(e){
+    return e >= 3;
+  }
+  return myArray.filter(testGreater);
+}
+
+
+function longestConsec(strarr, k) {
+    if (strarr.length === 0 || k > strarr.length || k <= 0){
+      return '';
+    } else {
+      for (var i = 0; i < strarr.length; i++) {
+        strarr[i]
+      }
+    }
+}
+
+function hangman(){
+  var guessedLetters = [];
+  var wrongGuesses = 5;
+  var words = ['xylophone','computer','sushi','skiing','antidisestablishmentarianism'];
+  var word = words[Math.floor(Math.random() * 5)];
+  var remainingLetters = word.length;
+  var answerWord = [];
+  for (var i = 0; i < word.length; i++) {
+    answerWord[i] = '_';
+  }
+  while (remainingLetters !== 0 && wrongGuesses !== 0) {
+     var guess = prompt('Please guess a letter \n' + answerWord).toLowerCase();
+     var alreadyGuessed = false;
+     var correctGuess = false;
+     guessedLetters.push(guess);
+     for (var i = 0; i < guessedLetters.length; i++) {
+       if (guess === guessedLetters[i]) {
+         alert('You already guessed this letter. Please guess another.')
+         alreadyGuessed = true;
+       } else {
+         guessedLetters.push(guess);
+       }
+     }
+     if (alreadyGuessed === false) {
+       for (var i = 0; i < word.length; i++) {
+         if (guess === word[i]) {
+           answerWord[i] = guess;
+           remainingLetters--;
+           correctGuess = true;
+         }
+       }
+       if (correctGuess === false) {
+         wrongGuesses--;
+       }
+     }
+  }
+  if (remainingLetters === 0) {
+    alert('Congratulations! You win! The word was ' + word);
+  } else {
+    alert('Sorry, you lose! The word was ' + word);
+  }
+}
