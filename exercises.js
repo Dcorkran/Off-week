@@ -1069,3 +1069,30 @@ function hangman(){
     alert('Sorry, you lose! The word was ' + word);
   }
 }
+
+
+function hangman(){
+  var words = ['xylophone','computer','sushi','skiing','jazz'];
+  var word = words[Math.floor(Math.random() * words.length)];
+  var currentAnswer = [];
+  var lettersNotGuessed = word.length;
+  for (var i = 0; i < word.length; i++) {
+    currentAnswer[i] = '_';
+  }
+  while (lettersNotGuessed > 0) {
+    var guess = prompt('Please guess a letter \n' + currentAnswer);
+    guess = guess.toLowerCase();
+    if (guess.length !== 1) {
+      alert('Your guess should only be one letter');
+    } else {
+      for (var i = 0; i < word.length; i++) {
+        if (word[i] === guess) {
+          currentAnswer[i] = guess;
+          lettersNotGuessed--;
+        }
+      }
+    }
+  }
+  alert('Congratulations, you win! The word was ' + word);
+  console.log(currentAnswer);
+}
