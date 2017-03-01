@@ -1103,7 +1103,11 @@ function eightBall(){
   do {
     console.log(prompt);
     var question = prompt('Welcome ' + name + '. What is your question?');
-    var answer = answers[Math.floor(Math.random() * answers.length)];
-    alert('The question was: ' + question +'\n' + 'The magic 8-ball says: ' + answer);
+    if (question === null) {
+      break;
+    } else {
+      var answer = answers[Math.floor(Math.random() * answers.length)];
+      alert('The question was: ' + question +'\n' + 'The magic 8-ball says: ' + answer);
+    }
   } while (question !== null);
 }
