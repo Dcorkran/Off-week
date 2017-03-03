@@ -1126,3 +1126,46 @@ function zip(arr1, arr2){
   }
   return answerArray;
 }
+
+function charCheck(text, max, spaces){
+  if (spaces) {
+      if (text.length <= max) {
+        return [true,text];
+      } else {
+        return [false,text.substring(0,max)];
+      }
+  } else {
+    if (text.replace(/\s/g, '').length <= max) {
+      return [true,text.replace(/\s/g, '')];
+    } else {
+      return [false,text.replace(/\s/g, '').substring(0,max)];
+    }
+  }
+};
+
+
+function stockList(listOfArt, listOfCat){
+  console.log(listOfArt, listOfCat);
+  var answer = "";
+  if (listOfCat.length === 0 || listOfArt.length === 0) {
+    return answer;
+  } else {
+    var answerString = '';
+    for (var i = 0; i < listOfCat.length; i++) {
+      var letter = listOfCat[i];
+      var count = 0;
+      for (var j = 0; j < listOfArt.length; j++) {
+        var intStart = listOfArt[j].indexOf(' ') + 1;
+        if (letter === listOfArt[j][0]) {
+          count += parseInt(listOfArt[j].substring(intStart,listOfArt[j].length));
+        }
+      }
+      if (i === 0) {
+        answerString += `(${letter} : ${count})`;
+      } else {
+        answerString += ` - (${letter} : ${count})`;
+      }
+    }
+    return answerString;
+  }
+}
