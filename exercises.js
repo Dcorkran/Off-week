@@ -1383,17 +1383,50 @@ function missingAlphabets(s) {
 }
 
 function longestConsec(strarr, k) {
-    let testArr = [];
-    let i = 0;
-    let longestWord = "";
-    if (strarr.length === 0 || k > strarr.length || k <= 0) {
-      return "";
-    } else {
-      while (strarr[i + (k - 1)]) {
-        for (var i = 0; i < array.length; i++) {
-          array[i]
-        }
-      }
-      testArr[i] = strarr[i];
+  let i = 0;
+  let tempStr = "";
+  let answerStr = "";
+  while (i <= strarr.length - k) {
+    for (var j = 0; j < k; j++) {
+      tempStr += strarr[i + j];
     }
+    if (tempStr.length > answerStr.length) {
+      answerStr = tempStr;
+    }
+    i++;
+    tempStr = "";
+  }
+  return answerStr;
+}
+
+
+function orderWeight(str) {
+  let arr = str.split(' ');
+  let sorted;
+  do {
+    sorted = false;
+    for (var i=0; i < arr.length-1; i++) {
+      let sum1 = getVal(arr[i]);
+      let sum2 = getVal(arr[i+1]);
+            if (sum1 > sum2) {
+                var temp = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = temp;
+                swapped = true;
+            } else if (sum1 === sum2) {
+                for (var j = 0; j < Math.min(arr[i].length,arr[i+1].length); j++) {
+                  if (arr[i][j] > arr[i+1][j]) {
+
+                  }
+                }
+            }
+        }
+  } while (sorted);
+  function getVal(str){
+    let sum = 0;
+    for (var i = 0; i < str.length; i++) {
+      sum += parseInt(str[i]);
+    }
+    return sum;
+  }
 }
