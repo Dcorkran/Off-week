@@ -1381,3 +1381,19 @@ function missingAlphabets(s) {
   }
   return answerStr;
 }
+
+function longestConsec(strarr, k) {
+    let testArr = [];
+    let i = 0;
+    let longestWord = "";
+    if (strarr.length === 0 || k > strarr.length || k <= 0) {
+      return "";
+    } else {
+      while (strarr[i + (k - 1)]) {
+        for (var i = 0; i < array.length; i++) {
+          array[i]
+        }
+      }
+      testArr[i] = strarr[i];
+    }
+}
