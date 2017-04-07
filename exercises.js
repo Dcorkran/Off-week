@@ -1402,26 +1402,28 @@ function longestConsec(strarr, k) {
 
 function orderWeight(str) {
   let arr = str.split(' ');
-  let sorted;
-  do {
-    sorted = false;
-    for (var i=0; i < arr.length-1; i++) {
-      let sum1 = getVal(arr[i]);
-      let sum2 = getVal(arr[i+1]);
-            if (sum1 > sum2) {
-                var temp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = temp;
-                swapped = true;
-            } else if (sum1 === sum2) {
-                for (var j = 0; j < Math.min(arr[i].length,arr[i+1].length); j++) {
-                  if (arr[i][j] > arr[i+1][j]) {
-
-                  }
-                }
-            }
+  return arr.sort((a,b)=>{
+    let sum1 = getVal(a);
+    let sum2 = getVal(b);
+    if (sum1 === sum2) {
+      for (var i = 0; i < Math.min(a.length,b.length); i++) {
+        if (a[i] < b[i]) {
+          return -1;
+        } else if (a[i] > b[i]) {
+          return 1
         }
-  } while (sorted);
+      }
+      if (a.length < b.length) {
+        return -1
+      } else if (a.length > b.length) {
+        return 1
+      } else {
+        return 0;
+      }
+    } else {
+      return sum1 - sum2;
+    }
+  }).join(' ')
   function getVal(str){
     let sum = 0;
     for (var i = 0; i < str.length; i++) {
