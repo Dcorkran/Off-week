@@ -1432,3 +1432,40 @@ function orderWeight(str) {
     return sum;
   }
 }
+
+function loop_size(node){
+  let i = 1;
+  node.seen = true;
+  if (node.next.seen) {
+    return i;
+  } else {
+    let start = node;
+    let finish = node.getNext();
+    while (start !== finish) {
+      i++;
+      finish = finish.getNext();
+    }
+  }
+  return i;
+}
+
+function duplicateEncode(word){
+  word = word.toLowerCase();
+  let letterCountObj = {};
+  let answerStr = '';
+  for (var i = 0; i < word.length; i++) {
+    if (letterCountObj[word[i]]) {
+      letterCountObj[word[i]]++;
+    } else {
+      letterCountObj[word[i]] = 1;
+    }
+  }
+  for (var i = 0; i < word.length; i++) {
+    if (letterCountObj[word[i]] > 1) {
+      answerStr += ')';
+    } else {
+      answerStr += '(';
+    }
+  }
+  return answerStr;
+}
