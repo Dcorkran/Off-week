@@ -1542,3 +1542,26 @@ function sortArray(array) {
     return onlyEvenArray;
   }
 }
+
+function findMissingLetter(array) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i].charCodeAt(0) !== array[i+1].charCodeAt(0) - 1) {
+      return String.fromCharCode(array[i+1].charCodeAt(0) - 1)
+    }
+  }
+}
+
+function LCS(x, y) {
+  let answerString = '';
+  let innerLoopStart = 0;
+  for (var i = 0; i < y.length; i++) {
+    for (var j = innerLoopStart; j < x.length; j++) {
+      if (y[i] === x[j]) {
+        answerString += y[i];
+        i++;
+        innerLoopStart = j;
+      }
+    }
+  }
+  return answerString
+}
