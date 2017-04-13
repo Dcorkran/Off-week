@@ -1645,12 +1645,11 @@ const fibonacci = n => {
 }
 
 function fibonacci (n){
-  let fibNum1 = 1;
-  let fibNum2 = 1;
-  for (var i = 0; i < n; i++) {
-    fibNum1 += fibNum2;
-
+  let fibArr = [1,1];
+  for (var i = 1; i < n; i++) {
+    fibArr.push(fibArr[i - 1] + fibArr[i])
   }
+  return fibArr[fibArr.length - 1]
 }
 
 
