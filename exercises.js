@@ -1661,3 +1661,12 @@ function fibonacci (n){
       return str[str.length-1] + recursiveReverse(str.substring(0,str.length-1))
     }
   }
+
+function Mormons(startingNumber, reach, target){
+//let the mission begin!
+  if (startingNumber > target) {
+    return 0;
+  } else {
+    return 1 + Mormons((startingNumber * reach) + startingNumber, reach, target);
+  }
+}
