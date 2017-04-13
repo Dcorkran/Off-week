@@ -1619,3 +1619,45 @@ function tripledouble(num1, num2) {
   }
   return 0;
 }
+
+const sequenceSum = (begin, end, step) => {
+  if (begin > end) {
+    return 0;
+  } else {
+    return begin + sequenceSum(begin + step,end, step)
+  }
+};
+
+const factorial = n => {
+  if (n === 1) {
+    return 0
+  } else {
+    return n * factorial(n - 1)
+  }
+};
+
+const fibonacci = n => {
+  if (n < 2){
+    return 1;
+  }else{
+    return fibonacci(n-2) + fibonacci(n-1);
+  }
+}
+
+function fibonacci (n){
+  let fibNum1 = 1;
+  let fibNum2 = 1;
+  for (var i = 0; i < n; i++) {
+    fibNum1 += fibNum2;
+
+  }
+}
+
+
+  function recursiveReverse(str){
+    if (str.length < 1) {
+      return str
+    } else {
+      return str[str.length-1] + recursiveReverse(str.substring(0,str.length-1))
+    }
+  }
