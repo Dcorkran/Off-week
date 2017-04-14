@@ -1,9 +1,14 @@
 # Off-week
 
+# Update 04/13/2017
+I moved all of the exercises into different directories. Each is about a month and a half of time. part1 exercises were completed the longest ago.
+
+## Old Info
+
 Thanksgiving break code wars assessments.
 ... This has branched out to more than just Thanksgiving. I will try to keep as updated as possible.
-... Merry Christmas! Happy Holidays! Will move different solutions to differnet files asap
-hellossss
+... Merry Christmas! Happy Holidays! Will move different solutions to different files asap
+
 
 ## songDecoder
 
