@@ -1682,3 +1682,80 @@ function sumTheTreeValues(root){
     return root.value + sumTheTreeValues(root.right)
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function test(str){
+  if (str.length < 1) {
+    return str
+  } else {
+    return str[str.length-1] + test(str.substring(0,str.length - 1))
+  }
+}
+
+function arraySum(arraySet) {
+  var flatArray = arraySet.map((arr) => {
+    if (Array.isArray(arr)) {
+      return isArray(arr)
+    } else if (Number.isInteger(arr)) {
+      return arr;
+    }
+
+  })
+  return flatArray.reduce((a,b)=>{
+    if (Number.isInteger(a) && Number.isInteger(b)) {
+      return a+b;
+    } else {
+      return a + 0;
+    }
+  },0)
+}
+
+//arraySet = [[[[[[[[1]]]]]]]]
+
+function isArray(arraySet){
+
+    if (!Array.isArray(arraySet[0])){
+      return arraySet.reduce((a,b)=>{
+        if (Number.isInteger(a) && Number.isInteger(b)) {
+          return a+b;
+        } else {
+          return a + 0;
+        }
+      },0)
+     }
+     else {
+     return isArray(arraySet[0]);
+    }
+}
+
+function duplicateCount(text){
+  text = text.toLowerCase();
+  let answerObj = {};
+  let dupSum = 0;
+  for (var i = 0; i < text.length; i++) {
+    if (answerObj[text[i]]) {
+      answerObj[text[i]]++
+    } else {
+      answerObj[text[i]] = 1;
+    }
+  }
+  for (var key in answerObj) {
+    if (answerObj[key] > 1) {
+      dupSum++;
+    }
+  }
+  return dupSum
+}
