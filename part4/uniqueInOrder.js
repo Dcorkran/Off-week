@@ -1,4 +1,4 @@
-var uniqueInOrder=function(iterable){
+  var uniqueInOrder=function(iterable){
   typeof iterable === 'string' ? iterable = iterable.split('') : iterable;
   return iterable.filter((e,i,a)=>{
     if (i === 0) {
