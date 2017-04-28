@@ -11,3 +11,14 @@ function pyramid(n){
     console.log(space + x);
   }
 }
+
+function pyramid(n){
+  let str = '';
+  for (var i = 0; i < n; i++) {
+    for (var j = n; j > 0; j--) {
+      str += j <= i ? 'X ':' ';
+    }
+    str += '\n'
+  }
+  return str
+}
