@@ -4,11 +4,8 @@ function mix(s1, s2) {
   s2 = s2.match(lowerRegEx);
   let s1Obj = countLetters(s1);
   let s2Obj = countLetters(s2);
-  console.log(s1Obj, s2Obj);
   let newObj = compareObjects(s1Obj,s2Obj)
-  console.log(newObj);
-  let shapedArr = formatArray(newObj);
-  console.log(shapedArr);
+  return formatArray(newObj);
 }
 
 function countLetters(charArray){
@@ -60,7 +57,25 @@ function formatArray(object){
     answerArr.push(object[key]);
   }
   answerArr.sort((a,b)=>{
-    return a.value.length - b.value.length;
+    if (b.value.length - a.value.length === 0) {
+      if (a.obj === b.obj) {
+        if (a.value > b.value) {
+          return 1;
+        } else if (a.value < b.value) {
+          return -1
+        } else {
+          return 0
+        }
+      } else if (a.obj === '=') {
+        return 1
+      } else if (b.obj === '=') {
+        return -1;
+      } else {
+        return parseInt(a.obj) - parseInt(b.obj);
+      }
+    } else {
+      return b.value.length - a.value.length;
+    }
   })
-  return answerArr;
+  return answerArr.map(e=>`${e.obj}:${e.value}`).join('/')
 }
